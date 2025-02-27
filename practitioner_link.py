@@ -83,7 +83,7 @@ def main():
     ph = ProcessHandler(progress_sheet, {"progress": "setting", "UrlNum": 1}, "A1")
     progress = ph.load_progress()
     set_link_sheet(link_sheet)
-    if  progress["progress"] != "finished":
+    if progress["progress"] != "finished":
         link_sheet.update([["Running Scrapping"]], "C1")
     
         progress["progress"] = "processing"
