@@ -37,7 +37,7 @@ def batch_append_multiple_rows(worksheet, rows_list, retries=3, delay=10):
             worksheet.append_rows(rows_list, value_input_option='USER_ENTERED')
             return
         except gspread.exceptions.APIError as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504"]):
+            if any(code in str(e) for code in ["429", "500", "502", "503", "504"]):
                 print(f"API Error ({e}). Retry after {delay} seconds... (attempt {attempt+1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
