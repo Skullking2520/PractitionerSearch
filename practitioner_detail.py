@@ -132,59 +132,62 @@ def main():
     if progress["progress"] == "setting":
         set_detail_sheet(detail_sheet)
     link_list = extract(link_sheet)
-    detail_sheet.update([["Running Scrapping"]], "O1")
-    while progress["RowNum"] < len(link_list):
-        progress["progress"] = "processing"
-        driver.get(link_list[progress["RowNum"]])
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        wait_for_page_load(driver)
-        print(f"current page: row {progress["RowNum"]}")
-        name = find_element(driver, ".//lightning-layout-item[contains(@class, 'summary-view-responsive-style practitioner-name-style')]").text
-        details = find_elements(driver,
-                                   ".//lightning-layout-item[contains(@class, 'detail-value-responsive-style')]")
-        raw_address = details[0].text
-        address = raw_address.replace("\n", ", ")
-        contact = details[1].text
-        raw_limitations = details[2].text
-        limitations = raw_limitations.replace("\n", ", ")
-        raw_conditions = details[3].text
-        conditions = raw_conditions.replace("\n", ", ")
-        status = details[4].text
-        registration_number = details[5].text
-        commenced = details[6].text
-        anniversary = details[7].text
-        expires = details[8].text
-        date_scs = details[9].text
-        raw_reason_scs = details[10].text
-        reason_scs = raw_reason_scs.replace("\n", ", ")
-        raw_director_name = details[11].text
-        director_name = raw_director_name.replace("\n", ", ")
-        partnership = find_element(driver, "//p[contains(@class, 'sub-header-text-style') and contains(text(), 'Partnership details')]/following-sibling::div//span").text
-        updates = [name,
-                   address,
-                   contact,
-                   limitations,
-                   conditions,
-                   status,
-                   registration_number,
-                   commenced,
-                   anniversary,
-                   expires,
-                   date_scs,
-                   reason_scs,
-                   director_name,
-                   partnership,
-                   ]
-        append_row_with_retry(detail_sheet, updates)
-        progress["RowNum"] += 1
+    if progress["progress"] != "finished":
+        detail_sheet.update([["Running Scrapping"]], "O1")
+        while progress["RowNum"] < len(link_list):
+            progress["progress"] = "processing"
+            driver.get(link_list[progress["RowNum"]])
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            wait_for_page_load(driver)
+            print(f"current page: row {progress["RowNum"]}")
+            name = find_element(driver, ".//lightning-layout-item[contains(@class, 'summary-view-responsive-style practitioner-name-style')]").text
+            details = find_elements(driver,
+                                       ".//lightning-layout-item[contains(@class, 'detail-value-responsive-style')]")
+            raw_address = details[0].text
+            address = raw_address.replace("\n", ", ")
+            contact = details[1].text
+            raw_limitations = details[2].text
+            limitations = raw_limitations.replace("\n", ", ")
+            raw_conditions = details[3].text
+            conditions = raw_conditions.replace("\n", ", ")
+            status = details[4].text
+            registration_number = details[5].text
+            commenced = details[6].text
+            anniversary = details[7].text
+            expires = details[8].text
+            date_scs = details[9].text
+            raw_reason_scs = details[10].text
+            reason_scs = raw_reason_scs.replace("\n", ", ")
+            raw_director_name = details[11].text
+            director_name = raw_director_name.replace("\n", ", ")
+            partnership = find_element(driver, "//p[contains(@class, 'sub-header-text-style') and contains(text(), 'Partnership details')]/following-sibling::div//span").text
+            updates = [name,
+                       address,
+                       contact,
+                       limitations,
+                       conditions,
+                       status,
+                       registration_number,
+                       commenced,
+                       anniversary,
+                       expires,
+                       date_scs,
+                       reason_scs,
+                       director_name,
+                       partnership,
+                       ]
+            append_row_with_retry(detail_sheet, updates)
+            progress["RowNum"] += 1
+            ph.save_progress(progress)
+    
+        progress["progress"] = "finished"
+        progress["RowNum"] = 0
         ph.save_progress(progress)
-
-    progress["progress"] = "finished"
-    progress["RowNum"] = 0
-    ph.save_progress(progress)
-    detail_sheet.update([["Finished Scrapping"]], "O1")
-    driver.quit()
-    print("Saved every data into the Google Sheet successfully.")
+        detail_sheet.update([["Finished Scrapping"]], "O1")
+        driver.quit()
+        print("Saved every data into the Google Sheet successfully.")
+    else:
+        print("Finished already")
 
 if __name__ == "__main__":
     main()
