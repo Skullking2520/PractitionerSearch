@@ -32,7 +32,7 @@ def append_row_with_retry(worksheet, data, retries=3, delay=5):
 
 def set_detail_sheet(worksheet):
     worksheet.clear()
-    headers = ["Name", "Business address", "Contact Details", "Building practitioner registration",
+    headers = ["Name", "Business address", "Contact Details",
                "Limitations", "Conditions", "Status", "Registration number", "Commenced", "Anniversary",
                "Expires", "Date registration was suspended, cancelled or surrendered (if applicable)",
                "Reason for Suspension or Cancellation (if applicable)", "Director Name", "Partnership details"," lat", "long"]
