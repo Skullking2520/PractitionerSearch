@@ -1,4 +1,5 @@
 # practitioner_detail.py
+import re
 import time
 
 import gspread
