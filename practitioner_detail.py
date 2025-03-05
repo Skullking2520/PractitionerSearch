@@ -162,7 +162,8 @@ def main():
             reason_scs = raw_reason_scs.replace("\n", ", ")
             raw_director_name = details[11].text
             director_name = raw_director_name.replace("\n", ", ")
-            partnership = find_element(driver, "//p[contains(@class, 'sub-header-text-style') and contains(text(), 'Partnership details')]/following-sibling::div//span").text
+            partnership_element = find_element(driver, "//p[contains(@class, 'sub-header-text-style') and contains(text(), 'Partnership details')]/following-sibling::div//span")
+            partnership = partnership_element.text if partnership_element != "N/A" else ""
             maps_url = f"https://www.google.com/maps/search/?api=1&query={quote(address)}"
             driver.get(maps_url)
             WebDriverWait(driver, 30).until(lambda d: "@" in d.current_url)
