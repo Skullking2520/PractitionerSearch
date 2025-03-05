@@ -5,7 +5,8 @@ import gspread
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait4
+from urllib.parse import quote
 
 from google_form_package import Sheet
 from process_handler import ProcessHandler
