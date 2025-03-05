@@ -135,7 +135,7 @@ def main():
         set_detail_sheet(detail_sheet)
     link_list = extract(link_sheet)
     if progress["progress"] != "finished":
-        detail_sheet.update([["Running Scrapping"]], "Q1")
+        detail_sheet.update([["Running Scrapping"]], "R1")
         while progress["RowNum"] < len(link_list):
             progress["progress"] = "processing"
             driver.get(link_list[progress["RowNum"]])
@@ -199,7 +199,7 @@ def main():
         progress["progress"] = "finished"
         progress["RowNum"] = 0
         ph.save_progress(progress)
-        detail_sheet.update([["Finished Scrapping"]], "Q1")
+        detail_sheet.update([["Finished Scrapping"]], "R1")
         driver.quit()
         print("Saved every data into the Google Sheet successfully.")
     else:
