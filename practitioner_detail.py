@@ -33,7 +33,7 @@ def set_detail_sheet(worksheet):
     headers = ["Name", "Business address", "Contact Details", "Building practitioner registration",
                "Limitations", "Conditions", "Status", "Registration number", "Commenced", "Anniversary",
                "Expires", "Date registration was suspended, cancelled or surrendered (if applicable)",
-               "Reason for Suspension or Cancellation (if applicable)", "Director Name", "Partnership details"]
+               "Reason for Suspension or Cancellation (if applicable)", "Director Name", "Partnership details"," lat", "long"]
     worksheet.append_row(headers)
     return worksheet
 
@@ -133,7 +133,7 @@ def main():
         set_detail_sheet(detail_sheet)
     link_list = extract(link_sheet)
     if progress["progress"] != "finished":
-        detail_sheet.update([["Running Scrapping"]], "O1")
+        detail_sheet.update([["Running Scrapping"]], "Q1")
         while progress["RowNum"] < len(link_list):
             progress["progress"] = "processing"
             driver.get(link_list[progress["RowNum"]])
@@ -161,6 +161,18 @@ def main():
             raw_director_name = details[11].text
             director_name = raw_director_name.replace("\n", ", ")
             partnership = find_element(driver, "//p[contains(@class, 'sub-header-text-style') and contains(text(), 'Partnership details')]/following-sibling::div//span").text
+            maps_url = f"https://www.google.com/maps/search/?api=1&query={quote(address)}"
+            driver.get(maps_url)
+            WebDriverWait(driver, 30).until(lambda d: "@" in d.current_url)
+            map_url = driver.current_url
+            pattern = r"@(-?\d+\.\d+),(-?\d+\.\d+)"
+            match = re.search(pattern, map_url)
+            if match:
+                va_lat, va_long = match.groups()
+            else:
+                va_lat = "No lat given"
+                va_long = "No long given"
+            
             updates = [name,
                        address,
                        contact,
@@ -175,6 +187,8 @@ def main():
                        reason_scs,
                        director_name,
                        partnership,
+                       va_lat,
+                       va_long
                        ]
             append_row_with_retry(detail_sheet, updates)
             progress["RowNum"] += 1
@@ -183,7 +197,7 @@ def main():
         progress["progress"] = "finished"
         progress["RowNum"] = 0
         ph.save_progress(progress)
-        detail_sheet.update([["Finished Scrapping"]], "O1")
+        detail_sheet.update([["Finished Scrapping"]], "Q1")
         driver.quit()
         print("Saved every data into the Google Sheet successfully.")
     else:
