@@ -1,15 +1,15 @@
 name: Run practitioner scrapping
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   workflow_dispatch:
-#   schedule:
-#     - cron: '0 15 * * *'
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 15 */3 * *'
 
 jobs:
-  run-link-scraping:
+  run-link-scraping-01:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -41,11 +41,714 @@ jobs:
         env:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         run: |
-          python practitioner_link.py
+          python practitioner_link_01.py
 
-  run-datail-scraping:
+  run-link-scraping-02:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 30 seconds
+        run: sleep 30
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_02.py
+
+  run-link-scraping-03:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 60 seconds
+        run: sleep 60
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_03.py
+
+  run-link-scraping-04:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 90 seconds
+        run: sleep 90
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_04.py
+
+  run-link-scraping-05:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 120 seconds
+        run: sleep 120
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_05.py
+
+  run-link-scraping-06:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 150 seconds
+        run: sleep 150
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_06.py
+
+  run-link-scraping-07:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 180 seconds
+        run: sleep 180
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_07.py
+
+  run-link-scraping-08:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 210 seconds
+        run: sleep 210
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_08.py
+
+  run-link-scraping-09:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 240 seconds
+        run: sleep 240
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_09.py
+
+  run-link-scraping-10:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 270 seconds
+        run: sleep 270
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_10.py
+
+  run-link-scraping-11:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 300 seconds
+        run: sleep 300
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_11.py
+
+  run-link-scraping-12:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 330 seconds
+        run: sleep 330
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_12.py
+
+  run-link-scraping-13:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 360 seconds
+        run: sleep 360
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_13.py
+
+  run-link-scraping-14:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 390 seconds
+        run: sleep 390
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_14.py
+
+  run-link-scraping-15:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 420 seconds
+        run: sleep 420
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_15.py
+
+  run-link-scraping-16:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 450 seconds
+        run: sleep 450
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_16.py
+
+  run-link-scraping-17:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 480 seconds
+        run: sleep 480
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_17.py
+
+  run-link-scraping-18:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 510 seconds
+        run: sleep 510
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_18.py
+
+  run-link-scraping-19:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 540 seconds
+        run: sleep 540
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_19.py
+
+  run-link-scraping-20:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 570 seconds
+        run: sleep 570
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install Google Chrome
+        run: |
+          set -ex
+          sudo apt-get update -y
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip
+          sudo rm -f /usr/local/bin/chromedriver
+          wget https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/linux64/chromedriver-linux64.zip
+          unzip chromedriver-linux64.zip
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_link_20.py
+
+  run-detail-scraping-01:
     needs:
-      - run-link-scraping
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -62,11 +765,2681 @@ jobs:
         env:
           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         run: |
-          python practitioner_detail.py
+          python practitioner_detail_01.py
+
+  run-detail-scraping-02:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 30 seconds
+        run: sleep 30
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_02.py
+
+  run-detail-scraping-03:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 60 seconds
+        run: sleep 60
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_03.py
+
+  run-detail-scraping-04:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 90 seconds
+        run: sleep 90
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_04.py
+
+  run-detail-scraping-05:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 120 seconds
+        run: sleep 120
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_05.py
+
+  run-detail-scraping-06:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 150 seconds
+        run: sleep 150
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_06.py
+
+  run-detail-scraping-07:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 180 seconds
+        run: sleep 180
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_07.py
+
+  run-detail-scraping-08:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 210 seconds
+        run: sleep 210
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_08.py
+
+  run-detail-scraping-09:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 240 seconds
+        run: sleep 240
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_09.py
+
+  run-detail-scraping-10:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 270 seconds
+        run: sleep 270
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_10.py
+
+  run-detail-scraping-11:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 300 seconds
+        run: sleep 300
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_11.py
+
+  run-detail-scraping-12:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 330 seconds
+        run: sleep 330
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_12.py
+
+  run-detail-scraping-13:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 360 seconds
+        run: sleep 360
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_13.py
+
+  run-detail-scraping-14:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 390 seconds
+        run: sleep 390
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_14.py
+
+  run-detail-scraping-15:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 420 seconds
+        run: sleep 420
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_15.py
+
+  run-detail-scraping-16:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 450 seconds
+        run: sleep 450
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_16.py
+
+  run-detail-scraping-17:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 480 seconds
+        run: sleep 480
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_17.py
+
+  run-detail-scraping-18:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 510 seconds
+        run: sleep 510
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_18.py
+
+  run-detail-scraping-19:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 540 seconds
+        run: sleep 540
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_19.py
+
+  run-detail-scraping-20:
+    needs:
+      - run-link-scraping-01
+      - run-link-scraping-02
+      - run-link-scraping-03
+      - run-link-scraping-04
+      - run-link-scraping-05
+      - run-link-scraping-06
+      - run-link-scraping-07
+      - run-link-scraping-08
+      - run-link-scraping-09
+      - run-link-scraping-10
+      - run-link-scraping-11
+      - run-link-scraping-12
+      - run-link-scraping-13
+      - run-link-scraping-14
+      - run-link-scraping-15
+      - run-link-scraping-16
+      - run-link-scraping-17
+      - run-link-scraping-18
+      - run-link-scraping-19
+      - run-link-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 570 seconds
+        run: sleep 570
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_20.py
+
+  run-detail-scraping-21:
+    needs:
+      - run-detail-scraping-01
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_01.py
+
+  run-detail-scraping-22:
+    needs:
+      - run-detail-scraping-02
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 30 seconds
+        run: sleep 30
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_02.py
+
+  run-detail-scraping-23:
+    needs:
+      - run-detail-scraping-03
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 60 seconds
+        run: sleep 60
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_03.py
+
+  run-detail-scraping-24:
+    needs:
+      - run-detail-scraping-04
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 90 seconds
+        run: sleep 90
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_04.py
+
+  run-detail-scraping-25:
+    needs:
+      - run-detail-scraping-05
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 120 seconds
+        run: sleep 120
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_05.py
+
+  run-detail-scraping-26:
+    needs:
+      - run-detail-scraping-06
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 150 seconds
+        run: sleep 150
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_06.py
+
+  run-detail-scraping-27:
+    needs:
+      - run-detail-scraping-07
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 180 seconds
+        run: sleep 180
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_07.py
+
+  run-detail-scraping-28:
+    needs:
+      - run-detail-scraping-08
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 210 seconds
+        run: sleep 210
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_08.py
+
+  run-detail-scraping-29:
+    needs:
+      - run-detail-scraping-09
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 240 seconds
+        run: sleep 240
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_09.py
+
+  run-detail-scraping-30:
+    needs:
+      - run-detail-scraping-10
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 270 seconds
+        run: sleep 270
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_10.py
+
+  run-detail-scraping-31:
+    needs:
+      - run-detail-scraping-11
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 300 seconds
+        run: sleep 300
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_11.py
+
+  run-detail-scraping-32:
+    needs:
+      - run-detail-scraping-12
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 330 seconds
+        run: sleep 330
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_12.py
+
+  run-detail-scraping-33:
+    needs:
+      - run-detail-scraping-13
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 360 seconds
+        run: sleep 360
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_13.py
+
+  run-detail-scraping-34:
+    needs:
+      - run-detail-scraping-14
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 390 seconds
+        run: sleep 390
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_14.py
+
+  run-detail-scraping-35:
+    needs:
+      - run-detail-scraping-15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 420 seconds
+        run: sleep 420
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_15.py
+
+  run-detail-scraping-36:
+    needs:
+      - run-detail-scraping-16
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 450 seconds
+        run: sleep 450
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_16.py
+
+  run-detail-scraping-37:
+    needs:
+      - run-detail-scraping-17
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 480 seconds
+        run: sleep 480
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_17.py
+
+  run-detail-scraping-38:
+    needs:
+      - run-detail-scraping-18
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 510 seconds
+        run: sleep 510
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_18.py
+
+  run-detail-scraping-39:
+    needs:
+      - run-detail-scraping-19
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 540 seconds
+        run: sleep 540
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_19.py
+
+  run-detail-scraping-40:
+    needs:
+      - run-detail-scraping-20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 570 seconds
+        run: sleep 570
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_20.py
+
+  run-detail-scraping-41:
+    needs:
+      - run-detail-scraping-21
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_01.py
+
+  run-detail-scraping-42:
+    needs:
+      - run-detail-scraping-22
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 30 seconds
+        run: sleep 30
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_02.py
+
+  run-detail-scraping-43:
+    needs:
+      - run-detail-scraping-23
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 60 seconds
+        run: sleep 60
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_03.py
+
+  run-detail-scraping-44:
+    needs:
+      - run-detail-scraping-24
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 90 seconds
+        run: sleep 90
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_04.py
+
+  run-detail-scraping-45:
+    needs:
+      - run-detail-scraping-25
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 120 seconds
+        run: sleep 120
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_05.py
+
+  run-detail-scraping-46:
+    needs:
+      - run-detail-scraping-26
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 150 seconds
+        run: sleep 150
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_06.py
+
+  run-detail-scraping-47:
+    needs:
+      - run-detail-scraping-27
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 180 seconds
+        run: sleep 180
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_07.py
+
+  run-detail-scraping-48:
+    needs:
+      - run-detail-scraping-28
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 210 seconds
+        run: sleep 210
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_08.py
+
+  run-detail-scraping-49:
+    needs:
+      - run-detail-scraping-29
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 240 seconds
+        run: sleep 240
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_09.py
+
+  run-detail-scraping-50:
+    needs:
+      - run-detail-scraping-30
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 270 seconds
+        run: sleep 270
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_10.py
+
+  run-detail-scraping-51:
+    needs:
+      - run-detail-scraping-31
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 300 seconds
+        run: sleep 300
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_11.py
+
+  run-detail-scraping-52:
+    needs:
+      - run-detail-scraping-32
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 330 seconds
+        run: sleep 330
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_12.py
+
+  run-detail-scraping-53:
+    needs:
+      - run-detail-scraping-33
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 360 seconds
+        run: sleep 360
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_13.py
+
+  run-detail-scraping-54:
+    needs:
+      - run-detail-scraping-34
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 390 seconds
+        run: sleep 390
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_14.py
+
+  run-detail-scraping-55:
+    needs:
+      - run-detail-scraping-35
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 420 seconds
+        run: sleep 420
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_15.py
+
+  run-detail-scraping-56:
+    needs:
+      - run-detail-scraping-36
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 450 seconds
+        run: sleep 450
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_16.py
+
+  run-detail-scraping-57:
+    needs:
+      - run-detail-scraping-37
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 480 seconds
+        run: sleep 480
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_17.py
+
+  run-detail-scraping-58:
+    needs:
+      - run-detail-scraping-38
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 510 seconds
+        run: sleep 510
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_18.py
+
+  run-detail-scraping-59:
+    needs:
+      - run-detail-scraping-39
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 540 seconds
+        run: sleep 540
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_19.py
+
+  run-detail-scraping-60:
+    needs:
+      - run-detail-scraping-40
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 570 seconds
+        run: sleep 570
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_20.py
+
+  run-detail-scraping-61:
+    needs:
+      - run-detail-scraping-41
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_01.py
+
+  run-detail-scraping-62:
+    needs:
+      - run-detail-scraping-42
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 30 seconds
+        run: sleep 30
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_02.py
+
+  run-detail-scraping-63:
+    needs:
+      - run-detail-scraping-43
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 60 seconds
+        run: sleep 60
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_03.py
+
+  run-detail-scraping-64:
+    needs:
+      - run-detail-scraping-44
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 90 seconds
+        run: sleep 90
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_04.py
+
+  run-detail-scraping-65:
+    needs:
+      - run-detail-scraping-45
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 120 seconds
+        run: sleep 120
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_05.py
+
+  run-detail-scraping-66:
+    needs:
+      - run-detail-scraping-46
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 150 seconds
+        run: sleep 150
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_06.py
+
+  run-detail-scraping-67:
+    needs:
+      - run-detail-scraping-47
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 180 seconds
+        run: sleep 180
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_07.py
+
+  run-detail-scraping-68:
+    needs:
+      - run-detail-scraping-48
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 210 seconds
+        run: sleep 210
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_08.py
+
+  run-detail-scraping-69:
+    needs:
+      - run-detail-scraping-49
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 240 seconds
+        run: sleep 240
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_09.py
+
+  run-detail-scraping-70:
+    needs:
+      - run-detail-scraping-50
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 270 seconds
+        run: sleep 270
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_10.py
+
+  run-detail-scraping-71:
+    needs:
+      - run-detail-scraping-51
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 300 seconds
+        run: sleep 300
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_11.py
+
+  run-detail-scraping-72:
+    needs:
+      - run-detail-scraping-52
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 330 seconds
+        run: sleep 330
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_12.py
+
+  run-detail-scraping-73:
+    needs:
+      - run-detail-scraping-53
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 360 seconds
+        run: sleep 360
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_13.py
+
+  run-detail-scraping-74:
+    needs:
+      - run-detail-scraping-54
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 390 seconds
+        run: sleep 390
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_14.py
+
+  run-detail-scraping-75:
+    needs:
+      - run-detail-scraping-55
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 420 seconds
+        run: sleep 420
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_15.py
+
+  run-detail-scraping-76:
+    needs:
+      - run-detail-scraping-56
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 450 seconds
+        run: sleep 450
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_16.py
+
+  run-detail-scraping-77:
+    needs:
+      - run-detail-scraping-57
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 480 seconds
+        run: sleep 480
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_17.py
+
+  run-detail-scraping-78:
+    needs:
+      - run-detail-scraping-58
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 510 seconds
+        run: sleep 510
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_18.py
+
+  run-detail-scraping-79:
+    needs:
+      - run-detail-scraping-59
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 540 seconds
+        run: sleep 540
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_19.py
+
+  run-detail-scraping-80:
+    needs:
+      - run-detail-scraping-60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 570 seconds
+        run: sleep 570
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_20.py
+
+  run-detail-scraping-81:
+    needs:
+      - run-detail-scraping-61
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_01.py
+
+  run-detail-scraping-82:
+    needs:
+      - run-detail-scraping-62
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 30 seconds
+        run: sleep 30
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_02.py
+
+  run-detail-scraping-83:
+    needs:
+      - run-detail-scraping-63
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 60 seconds
+        run: sleep 60
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_03.py
+
+  run-detail-scraping-84:
+    needs:
+      - run-detail-scraping-64
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 90 seconds
+        run: sleep 90
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_04.py
+
+  run-detail-scraping-85:
+    needs:
+      - run-detail-scraping-65
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 120 seconds
+        run: sleep 120
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_05.py
+
+  run-detail-scraping-86:
+    needs:
+      - run-detail-scraping-66
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 150 seconds
+        run: sleep 150
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_06.py
+
+  run-detail-scraping-87:
+    needs:
+      - run-detail-scraping-67
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 180 seconds
+        run: sleep 180
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_07.py
+
+  run-detail-scraping-88:
+    needs:
+      - run-detail-scraping-68
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 210 seconds
+        run: sleep 210
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_08.py
+
+  run-detail-scraping-89:
+    needs:
+      - run-detail-scraping-69
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 240 seconds
+        run: sleep 240
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_09.py
+
+  run-detail-scraping-90:
+    needs:
+      - run-detail-scraping-70
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 270 seconds
+        run: sleep 270
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_10.py
+
+  run-detail-scraping-91:
+    needs:
+      - run-detail-scraping-71
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 300 seconds
+        run: sleep 300
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_11.py
+
+  run-detail-scraping-92:
+    needs:
+      - run-detail-scraping-72
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 330 seconds
+        run: sleep 330
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_12.py
+
+  run-detail-scraping-93:
+    needs:
+      - run-detail-scraping-73
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 360 seconds
+        run: sleep 360
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_13.py
+
+  run-detail-scraping-94:
+    needs:
+      - run-detail-scraping-74
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 390 seconds
+        run: sleep 390
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_14.py
+
+  run-detail-scraping-95:
+    needs:
+      - run-detail-scraping-75
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 420 seconds
+        run: sleep 420
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_15.py
+
+  run-detail-scraping-96:
+    needs:
+      - run-detail-scraping-76
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 450 seconds
+        run: sleep 450
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_16.py
+
+  run-detail-scraping-97:
+    needs:
+      - run-detail-scraping-77
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 480 seconds
+        run: sleep 480
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_17.py
+
+  run-detail-scraping-98:
+    needs:
+      - run-detail-scraping-78
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 510 seconds
+        run: sleep 510
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_18.py
+
+  run-detail-scraping-99:
+    needs:
+      - run-detail-scraping-79
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 540 seconds
+        run: sleep 540
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_19.py
+
+  run-detail-scraping-100:
+    needs:
+      - run-detail-scraping-80
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for 570 seconds
+        run: sleep 570
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python practitioner_detail_20.py
+
+  run-report:
+    needs:
+      - run-detail-scraping-81
+      - run-detail-scraping-82
+      - run-detail-scraping-83
+      - run-detail-scraping-84
+      - run-detail-scraping-85
+      - run-detail-scraping-86
+      - run-detail-scraping-87
+      - run-detail-scraping-88
+      - run-detail-scraping-89
+      - run-detail-scraping-90
+      - run-detail-scraping-91
+      - run-detail-scraping-92
+      - run-detail-scraping-93
+      - run-detail-scraping-94
+      - run-detail-scraping-95
+      - run-detail-scraping-96
+      - run-detail-scraping-97
+      - run-detail-scraping-98
+      - run-detail-scraping-99
+      - run-detail-scraping-100
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Occupation Detail Scraping
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        run: |
+          python report.py
 
   run-clear:
     needs:
-      - run-datail-scraping
+      - run-report
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
