@@ -23,21 +23,21 @@ class Sheet:
         gc = gspread.authorize(credentials)
         spreadsheet_url = "https://docs.google.com/spreadsheets/d/1leD8qGyOZzmR1fSa7QNgB9GLoRlVrkHqlQrigEOOTcA/edit?gid=0#gid=0"
         retries = 3
-        delay = 5
+        delay = 60
         for attempt in range(retries):
             try:
                 self.spreadsheet = gc.open_by_url(spreadsheet_url)
                 break
             except gspread.exceptions.APIError as e:
-                if "429" in str(e):
+                if any(code in str(e) for code in ["429", "500", "502", "503", "504"]):
                     print(
-                        f"Quota exceeded when opening spreadsheet. Retrying in {delay} seconds (Attempt {attempt + 1}/{retries})")
+                        f"APIError encountered: {e}. Retrying in {delay} seconds (Attempt {attempt + 1}/{retries})")
                     time.sleep(delay)
                     delay *= 2
                 else:
                     raise
         else:
-            raise Exception("Failed to open spreadsheet after multiple attempts due to quota limits.")
+            raise Exception("Failed to open spreadsheet after multiple attempts due to API errors.")
 
     @staticmethod
     def set_driver():
