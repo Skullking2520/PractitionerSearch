@@ -1,14 +1,14 @@
 # practitioner_detail_01.py
 import re
 import time
+from urllib.parse import quote
 
 import gspread
-from pyasn1_modules.rfc5280 import postal_code
+from requests.exceptions import ConnectionError
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from urllib.parse import quote
 
 from google_form_package import Sheet
 from process_handler import ProcessHandler
@@ -18,13 +18,13 @@ driver = web_sheet.set_driver()
 wait = WebDriverWait(driver, 10)
 
 
-def append_row_with_retry(worksheet, data, retries=3, delay=5):
+def append_row_with_retry(worksheet, data, retries=3, delay=60):
     for attempt in range(retries):
         try:
             worksheet.append_row(data, value_input_option="USER_ENTERED")
             return
-        except gspread.exceptions.APIError as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]):
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"Error occurred. Retry after {delay} seconds ({attempt + 1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
@@ -63,10 +63,9 @@ def extract(sheet):
         try:
             sheet_header = sheet.row_values(1)
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(
-                    f"Read quota error when fetching header. Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"Read quota error when fetching header. Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
             else:
@@ -85,10 +84,9 @@ def extract(sheet):
         try:
             all_rows = sheet.get_all_values()[1:]
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(
-                    f"Read quota error when fetching all values. Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"Read quota error when fetching all values. Retrying in {delay} seconds... (Attempt {attempt + 1}/3)")
                 time.sleep(delay)
                 delay *= 2
             else:
@@ -101,7 +99,7 @@ def extract(sheet):
         postcode = row[postcode_idx - 1] if len(row) >= postcode_idx else ""
         if not link:
             break
-        mixed = {link : postcode}
+        mixed = {link: postcode}
         link_list.append(mixed)
     return link_list
 
@@ -113,24 +111,24 @@ def load_to_seen_data():
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(f"load_to_seen_data: 429 error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
             else:
                 raise
     else:
-        raise Exception("load_to_seen_data: Failed to get PracticeDetail sheet after multiple attempts.")
+        raise Exception("load_to_seen_data: Failed to get PractitionerDetail sheet after multiple attempts.")
 
     delay = 60
     for attempt in range(retries):
         try:
             detail_header = detail_sheet.row_values(1)
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(f"load_to_seen_data: Error 429 in header read. Retry after {delay} seconds... ({attempt +1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"load_to_seen_data: Error in header read. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
             else:
@@ -150,9 +148,9 @@ def load_to_seen_data():
         try:
             all_rows = detail_sheet.get_all_values()[1:]
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(f"load_to_seen_data: 429 error in full row read. Retry after {delay} seconds... ({attempt +1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"load_to_seen_data: Error in full row read. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
             else:
@@ -169,9 +167,8 @@ def load_to_seen_data():
     return dup_list
 
 
-
 def find_element(element_driver, tag):
-    max_retries = 10
+    max_retries = 3
     for attempt in range(max_retries):
         try:
             element = WebDriverWait(element_driver, 10).until(
@@ -212,18 +209,18 @@ def update_category(name, address, new_category):
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except gspread.exceptions.APIError as e:
+        except (gspread.exceptions.APIError, ConnectionError) as e:
             print(f"update_category: APIError in row_values: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
             time.sleep(delay)
     else:
-        print("update_category: Failed to get the Practice Detail sheet after multiple attempts.")
+        print("update_category: Failed to get the PractitionerDetail sheet after multiple attempts.")
         return
 
     for attempt in range(retries):
         try:
             header = detail_sheet.row_values(1)
             break
-        except gspread.exceptions.APIError as e:
+        except (gspread.exceptions.APIError, ConnectionError) as e:
             print(f"update_category: APIError in row_values: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
             time.sleep(delay)
     else:
@@ -242,7 +239,7 @@ def update_category(name, address, new_category):
         try:
             all_rows = detail_sheet.get_all_values()[1:]
             break
-        except gspread.exceptions.APIError as e:
+        except (gspread.exceptions.APIError, ConnectionError) as e:
             print(f"update_category: APIError in update_cell: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
             time.sleep(delay)
     else:
@@ -266,7 +263,7 @@ def update_category(name, address, new_category):
                     detail_sheet.update_cell(row_num, category_idx, updated_category)
                     print(f"Row {row_num}'s category has been updated to '{updated_category}'.")
                     return
-                except gspread.exceptions.APIError as e:
+                except (gspread.exceptions.APIError, ConnectionError) as e:
                     print(f"update_category: APIError in update_cell: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
                     time.sleep(delay)
             else:
@@ -275,8 +272,10 @@ def update_category(name, address, new_category):
 
     print("Could not find matching name and address.")
 
+
 def timer(start, end):
     return (end - start) < 19800
+
 
 def main():
     start = time.time()
@@ -286,23 +285,23 @@ def main():
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(f"load_to_seen_data: 429 error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
             else:
                 raise
     else:
-        raise Exception("load_to_seen_data: Failed to get the PracticeDetail sheet after multiple attempts.")
+        raise Exception("load_to_seen_data: Failed to get the PractitionerDetail sheet after multiple attempts.")
     delay = 60
     for attempt in range(retries):
         try:
             link_sheet = web_sheet.get_worksheet("PractitionerLink")
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(f"load_to_seen_data: 429 error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
             else:
@@ -314,9 +313,9 @@ def main():
         try:
             progress_sheet = web_sheet.get_worksheet("Progress")
             break
-        except gspread.exceptions.APIError as e:
-            if "429" in str(e):
-                print(f"load_to_seen_data: 429 error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
+        except (gspread.exceptions.APIError, ConnectionError) as e:
+            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
+                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
                 delay *= 2
             else:
@@ -338,10 +337,10 @@ def main():
             driver.get(current_link)
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             wait_for_page_load(driver)
-            print(f"current page: row {progress["RowNum"]}")
+            print(f"current page: row {progress['RowNum']}")
             name = find_element(driver,
                                 ".//lightning-layout-item[contains(@class, 'summary-view-responsive-style practitioner-name-style')]").text
-            category = find_element(driver,"//c-practitioner-detail//p[@class='sub-header-text-style']").text
+            category = find_element(driver, "//c-practitioner-detail//p[@class='sub-header-text-style']").text
             details = find_elements(driver,
                                     ".//lightning-layout-item[contains(@class, 'detail-value-responsive-style')]")
             fields = [
@@ -389,7 +388,7 @@ def main():
                 try:
                     WebDriverWait(driver, 30).until(lambda d: "@" in d.current_url)
                 except TimeoutException:
-                    print("Google Maps URL에 좌표가 포함되지 않았습니다.")
+                    print("lat/long not in url.")
                     va_lat, va_long = "No lat given", "No long given"
                 else:
                     map_url = driver.current_url
@@ -437,7 +436,6 @@ def main():
 
         if not progress["RowNum"] < len(link_list):
             progress["progress"] = "finished"
-            detail_sheet.update([["Finished Scrapping"]], "S1")
         ph.save_progress(progress)
         driver.quit()
         print("Saved every data into the Google Sheet successfully.")
