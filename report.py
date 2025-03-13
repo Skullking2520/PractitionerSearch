@@ -124,7 +124,7 @@ def main():
     detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
     report_sheet = web_sheet.get_worksheet("Report")
     base_sheet = web_sheet.get_worksheet("VIC Suburbs - Tracking")
-
+    detail_sheet.update([["Finished Scrapping"]], "S1")
     set_detail_sheet(report_sheet)
 
     base = extract(base_sheet)
