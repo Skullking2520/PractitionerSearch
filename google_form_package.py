@@ -22,7 +22,7 @@ class Sheet:
         credentials = Credentials.from_service_account_file(key_path, scopes=scopes)
         gc = gspread.authorize(credentials)
         spreadsheet_url = "https://docs.google.com/spreadsheets/d/REDACTED_WORK_SHEET_ID/edit?gid=0#gid=0"
-        retries = 3
+        retries = 10
         delay = 60
         for attempt in range(retries):
             try:
