@@ -15,6 +15,7 @@ from process_handler import ProcessHandler
 
 web_sheet = Sheet()
 driver = web_sheet.set_driver()
+driver.set_page_load_timeout(180)
 wait = WebDriverWait(driver, 10)
 
 
@@ -286,7 +287,7 @@ def update_category(name, address, new_category):
 
 
 def timer(start, end):
-    return (end - start) < 19800
+    return (end - start) < 18000
 
 def main():
     start = time.time()
@@ -344,6 +345,7 @@ def main():
             seen_data = load_to_seen_data()
             current_link = list(current_link_dict.keys())[0]
             driver.get(current_link)
+            wait_for_page_load(driver)
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             wait_for_page_load(driver)
             print(f"current page: row {progress['RowNum']}")
