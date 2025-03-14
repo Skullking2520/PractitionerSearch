@@ -168,7 +168,7 @@ def load_to_seen_data():
 
 
 def find_element(element_driver, tag):
-    max_retries = 10
+    max_retries = 3
     for attempt in range(max_retries):
         try:
             element = WebDriverWait(element_driver, 10).until(
@@ -197,7 +197,7 @@ def find_elements(element_driver, tag):
                 print(f"retry {attempt + 1}/{max_retries} ...")
                 time.sleep(1)
             else:
-                print("Failed to find element.")
+                print("Failed to find elements.")
                 return "N/A"
 
 
@@ -349,10 +349,18 @@ def main():
             wait_for_page_load(driver)
             print(f"current page: row {progress['RowNum']}")
             name = find_element(driver,
-                                ".//lightning-layout-item[contains(@class, 'summary-view-responsive-style practitioner-name-style')]").text
-            category = find_element(driver,"//c-practitioner-detail//p[@class='sub-header-text-style']").text
+                                ".//lightning-layout-item[contains(@class, 'summary-view-responsive-style practitioner-name-style')]")
+            if name != "N/A":
+                name = name.text
+            category = find_element(driver, "//c-practitioner-detail//p[@class='sub-header-text-style']")
+            if category != "N/A":
+                category = category.text
             details = find_elements(driver,
                                     ".//lightning-layout-item[contains(@class, 'detail-value-responsive-style')]")
+            if details == "N/A":
+                progress["RowNum"] += 1
+                print(f"Current row: {progress["RowNum"]}, Failed to find details. Processing to next row.")
+                continue
             fields = [
                 ("address", True),
                 ("contact", False),
