@@ -287,7 +287,7 @@ def update_category(name, address, new_category):
 
 
 def timer(start, end):
-    return (end - start) < 14400
+    return (end - start) < 14401
 
 def main():
     start = time.time()
