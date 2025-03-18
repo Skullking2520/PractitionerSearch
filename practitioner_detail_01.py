@@ -3,7 +3,6 @@ import re
 import time
 from urllib.parse import quote
 
-import gspread
 from requests.exceptions import ConnectionError
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
@@ -24,7 +23,7 @@ def append_row_with_retry(worksheet, data, retries=3, delay=60):
         try:
             worksheet.append_row(data, value_input_option="USER_ENTERED")
             return
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"Error occurred. Retry after {delay} seconds ({attempt + 1}/{retries})")
                 time.sleep(delay)
@@ -64,7 +63,7 @@ def extract(sheet):
         try:
             sheet_header = sheet.row_values(1)
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"Read quota error when fetching header. Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
                 time.sleep(delay)
@@ -85,7 +84,7 @@ def extract(sheet):
         try:
             all_rows = sheet.get_all_values()[1:]
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"Read quota error when fetching all values. Retrying in {delay} seconds... (Attempt {attempt + 1}/3)")
                 time.sleep(delay)
@@ -112,7 +111,7 @@ def load_to_seen_data():
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
@@ -127,7 +126,7 @@ def load_to_seen_data():
         try:
             detail_header = detail_sheet.row_values(1)
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"load_to_seen_data: Error in header read. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
@@ -149,7 +148,7 @@ def load_to_seen_data():
         try:
             all_rows = detail_sheet.get_all_values()[1:]
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"load_to_seen_data: Error in full row read. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
@@ -210,7 +209,7 @@ def update_category(name, address, new_category):
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             print(f"update_category: APIError in row_values: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
             time.sleep(delay)
     else:
@@ -221,7 +220,7 @@ def update_category(name, address, new_category):
         try:
             header = detail_sheet.row_values(1)
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             print(f"update_category: APIError in row_values: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
             time.sleep(delay)
     else:
@@ -240,7 +239,7 @@ def update_category(name, address, new_category):
         try:
             all_rows = detail_sheet.get_all_values()[1:]
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             print(f"update_category: APIError in update_cell: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
             time.sleep(delay)
     else:
@@ -264,7 +263,7 @@ def update_category(name, address, new_category):
                     detail_sheet.update_cell(row_num, category_idx, updated_category)
                     print(f"Row {row_num}'s category has been updated to '{updated_category}'.")
                     return
-                except (gspread.exceptions.APIError, ConnectionError) as e:
+                except Exception as e:
                     print(f"update_category: APIError in update_cell: {e}. Retry after {delay} seconds... ({attempt +1}/{retries})")
                     time.sleep(delay)
             else:
@@ -286,7 +285,7 @@ def main():
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
@@ -300,7 +299,7 @@ def main():
         try:
             link_sheet = web_sheet.get_worksheet("PractitionerLink")
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
@@ -314,7 +313,7 @@ def main():
         try:
             progress_sheet = web_sheet.get_worksheet("Progress")
             break
-        except (gspread.exceptions.APIError, ConnectionError) as e:
+        except Exception as e:
             if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
                 print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
                 time.sleep(delay)
