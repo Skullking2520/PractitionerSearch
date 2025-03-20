@@ -24,13 +24,11 @@ def append_row_with_retry(worksheet, data, retries=3, delay=60):
             worksheet.append_row(data, value_input_option="USER_ENTERED")
             return
         except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"Error occurred. Retry after {delay} seconds ({attempt + 1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                print(f"Failed to append rows {data} after {retries} attempts.")
-                return
+            print(f"Error occurred. Retry after {delay} seconds ({attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
+    print(f"Failed to append rows {data} after {retries} attempts.")
+    return
 
 
 def set_detail_sheet(worksheet):
@@ -63,13 +61,11 @@ def extract(sheet):
         try:
             sheet_header = sheet.row_values(1)
             break
-        except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"Read quota error when fetching header. Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+        except Exception:
+            print(
+                f"Read quota error when fetching header. Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("Failed to fetch worksheet header after multiple attempts.")
 
@@ -84,13 +80,11 @@ def extract(sheet):
         try:
             all_rows = sheet.get_all_values()[1:]
             break
-        except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"Read quota error when fetching all values. Retrying in {delay} seconds... (Attempt {attempt + 1}/3)")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+        except Exception:
+            print(
+                f"Read quota error when fetching all values. Retrying in {delay} seconds... (Attempt {attempt + 1}/3)")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("Failed to fetch all values after 3 attempts.")
     link_list = []
@@ -111,13 +105,11 @@ def load_to_seen_data():
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+        except Exception:
+            print(
+                f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("load_to_seen_data: Failed to get PractitionerDetail sheet after multiple attempts.")
 
@@ -126,13 +118,10 @@ def load_to_seen_data():
         try:
             detail_header = detail_sheet.row_values(1)
             break
-        except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"load_to_seen_data: Error in header read. Retry after {delay} seconds... ({attempt +1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+        except Exception:
+            print(f"load_to_seen_data: Error in header read. Retry after {delay} seconds... ({attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("load_to_seen_data: Failed to retrieve worksheet header after multiple attempts.")
 
@@ -149,12 +138,10 @@ def load_to_seen_data():
             all_rows = detail_sheet.get_all_values()[1:]
             break
         except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"load_to_seen_data: Error in full row read. Retry after {delay} seconds... ({attempt +1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+            print(
+                f"load_to_seen_data: Error in full row read. Retry after {delay} seconds... ({attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("load_to_seen_data: Failed to retrieve entire row after multiple attempts.")
 
@@ -285,13 +272,11 @@ def main():
         try:
             detail_sheet = web_sheet.get_worksheet("PractitionerDetail")
             break
-        except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+        except Exception:
+            print(
+                f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("load_to_seen_data: Failed to get the PractitionerDetail sheet after multiple attempts.")
     delay = 60
@@ -300,12 +285,10 @@ def main():
             link_sheet = web_sheet.get_worksheet("PractitionerLink")
             break
         except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+            print(
+                f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("load_to_seen_data: Failed to get the PractitionerLink sheet after multiple attempts.")
     delay = 60
@@ -314,12 +297,10 @@ def main():
             progress_sheet = web_sheet.get_worksheet("Progress")
             break
         except Exception as e:
-            if any(code in str(e) for code in ["500", "502", "503", "504", "429"]) or isinstance(e, ConnectionError):
-                print(f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt +1}/{retries})")
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise
+            print(
+                f"load_to_seen_data: Error in get_worksheet. Retry after {delay} seconds... ({attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2
     else:
         raise Exception("load_to_seen_data: Failed to get the Progress sheet after multiple attempts.")
     ph = ProcessHandler(progress_sheet, {"progress": "setting", "RowNum": 0}, "A2")
