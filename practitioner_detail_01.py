@@ -76,13 +76,13 @@ def extract(sheet):
         print("Could not detect requested row", e)
         return []
 
-    for attempt in range(3):
+    for attempt in range(retries):
         try:
             all_rows = sheet.get_all_values()[1:]
             break
         except Exception:
             print(
-                f"Read quota error when fetching all values. Retrying in {delay} seconds... (Attempt {attempt + 1}/3)")
+                f"Read quota error when fetching all values. Retrying in {delay} seconds... (Attempt {attempt + 1}{retries})")
             time.sleep(delay)
             delay *= 2
     else:
