@@ -10,10 +10,10 @@ Seeka Technology 소프트웨어 개발 인턴 업무로 진행했습니다. 인
 
 | 단계 | 코드 | 역할 |
 | --- | --- | --- |
-| 검색 결과 수집 | [practitioner_link_01.py](practitioner_link_01.py) 및 번호별 파일 | 검색 조건별 결과 링크 수집 |
-| 상세 정보 수집 | [practitioner_detail_01.py](practitioner_detail_01.py) 및 번호별 파일 | 등록 정보 상세 조회·적재 |
-| 결과 처리 | [report.py](report.py), [clear.py](clear.py) | 수집 결과 후처리 |
-| 작업 관리 | [process_handler.py](process_handler.py) | 작업 진행 관리 |
+| 검색 결과 수집 | [practitioner_link_01.py](scripts/practitioner_link_01.py) 및 번호별 파일 | 검색 조건별 결과 링크 수집 |
+| 상세 정보 수집 | [practitioner_detail_01.py](scripts/practitioner_detail_01.py) 및 번호별 파일 | 등록 정보 상세 조회·적재 |
+| 결과 처리 | [report.py](scripts/report.py), [clear.py](scripts/clear.py) | 수집 결과 후처리 |
+| 작업 관리 | [process_handler.py](scripts/process_handler.py) | 작업 진행 관리 |
 
 번호별 파일은 수집 범위를 나눈 동일 업무의 구성입니다. 먼저 링크 수집과 상세 수집의 관계를 보면 전체 흐름을 이해하기 쉽습니다.
 
@@ -25,23 +25,11 @@ Python, Chrome·ChromeDriver, Google Sheets 접근 권한과 서비스 계정이
 python -m pip install -r requirements.txt
 ```
 
-시트 연결과 단계별 실행 순서는 [workflow 기록](.github/workflows/scrapping.yaml)과 [시트 연결 코드](google_form_package.py)를 참고하세요. 상세 수집에는 링크 수집 결과가 필요합니다.
+시트 연결과 단계별 실행 순서는 [workflow 기록](.github/workflows/scrapping.yaml)과 [시트 연결 코드](scripts/google_form_package.py)를 참고하세요. 상세 수집에는 링크 수집 결과가 필요합니다.
 
 ## 현재 자동화 설정
 
 현재 workflow 파일은 전체가 주석 처리돼 있습니다. 과거 설정에는 달력 날짜를 기준으로 실행하는 `0 15 */3 * *` 스케줄이 남아 있습니다. 현재 실행 여부나 최신 데이터 보유량을 뜻하지 않습니다.
-
-
-## 파일을 읽는 순서
-
-| 시작 파일 | 역할 |
-| --- | --- |
-| [practitioner_link_01.py](<practitioner_link_01.py>) | 우편번호별 링크 수집 |
-| [practitioner_detail_01.py](<practitioner_detail_01.py>) | 상세 정보 수집 |
-| [report.py](<report.py>) | 집계 |
-| [clear.py](<clear.py>) | 시트 정리 |
-
-전체 파일과 분할 스크립트는 [구조 안내](docs/STRUCTURE.md)에 정리했습니다.
 
 ## 인증과 저장 대상
 
@@ -51,4 +39,16 @@ python -m pip install -r requirements.txt
 
 ## 저장소 관리
 
-실행 결과·인증 파일은 버전 관리에서 제외합니다. 공개 소스와 수집 데이터의 공개 범위는 구분하며, 인턴 업무 데이터·시트 접근 권한은 포함하지 않습니다. 보안 관련 내용은 [관리 기준](SECURITY.md)을 참고하세요.
+실행 결과·인증 파일은 버전 관리에서 제외합니다. 공개 소스와 수집 데이터의 공개 범위는 구분하며, 인턴 업무 데이터·시트 접근 권한은 포함하지 않습니다. 현재 파일의 제외 규칙은 이미 추적된 자료나 과거 커밋의 노출을 제거하지 않습니다.
+
+## 저장소 구성
+
+이번 정리에서 실행 코드와 보조 모듈을 `scripts/`로 옮겼습니다. 번호별 작업 구간과 기존 처리 로직은 유지합니다. 의존성과 설정 예시는 루트에 두며, 실행 명령의 기준 경로는 저장소 루트입니다.
+
+링크 수집은 루트의 `refined_db.csv`를 읽습니다. 이 파일은 네 자리 우편번호 목록이며 수집한 전문직 개인정보 결과물이 아닙니다.
+
+설정과 입력 시트를 준비한 뒤 시작 단계만 실행하는 예:
+
+```bash
+python scripts/practitioner_link_01.py
+```
