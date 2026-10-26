@@ -40,6 +40,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_01.py
 
@@ -76,6 +77,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_02.py
 
@@ -112,6 +114,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_03.py
 
@@ -148,6 +151,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_04.py
 
@@ -184,6 +188,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_05.py
 
@@ -220,6 +225,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_06.py
 
@@ -256,6 +262,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_07.py
 
@@ -292,6 +299,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_08.py
 
@@ -328,6 +336,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_09.py
 
@@ -364,6 +373,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_10.py
 
@@ -400,6 +410,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_11.py
 
@@ -436,6 +447,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_12.py
 
@@ -472,6 +484,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_13.py
 
@@ -508,6 +521,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_14.py
 
@@ -544,6 +558,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_15.py
 
@@ -580,6 +595,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_16.py
 
@@ -616,6 +632,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_17.py
 
@@ -652,6 +669,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_18.py
 
@@ -688,6 +706,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_19.py
 
@@ -724,6 +743,7 @@
 #       - name: Run Occupation Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_link_20.py
 
@@ -764,6 +784,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_01.py
 
@@ -806,6 +827,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_02.py
 
@@ -848,6 +870,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_03.py
 
@@ -890,6 +913,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_04.py
 
@@ -932,6 +956,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_05.py
 
@@ -974,6 +999,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_06.py
 
@@ -1016,6 +1042,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_07.py
 
@@ -1058,6 +1085,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_08.py
 
@@ -1100,6 +1128,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_09.py
 
@@ -1142,6 +1171,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_10.py
 
@@ -1184,6 +1214,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_11.py
 
@@ -1226,6 +1257,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_12.py
 
@@ -1268,6 +1300,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_13.py
 
@@ -1310,6 +1343,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_14.py
 
@@ -1352,6 +1386,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_15.py
 
@@ -1394,6 +1429,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_16.py
 
@@ -1436,6 +1472,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_17.py
 
@@ -1478,6 +1515,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_18.py
 
@@ -1520,6 +1558,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_19.py
 
@@ -1562,6 +1601,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_20.py
 
@@ -1583,6 +1623,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_01.py
 
@@ -1606,6 +1647,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_02.py
 
@@ -1629,6 +1671,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_03.py
 
@@ -1652,6 +1695,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_04.py
 
@@ -1675,6 +1719,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_05.py
 
@@ -1698,6 +1743,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_06.py
 
@@ -1721,6 +1767,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_07.py
 
@@ -1744,6 +1791,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_08.py
 
@@ -1767,6 +1815,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_09.py
 
@@ -1790,6 +1839,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_10.py
 
@@ -1813,6 +1863,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_11.py
 
@@ -1836,6 +1887,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_12.py
 
@@ -1859,6 +1911,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_13.py
 
@@ -1882,6 +1935,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_14.py
 
@@ -1905,6 +1959,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_15.py
 
@@ -1928,6 +1983,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_16.py
 
@@ -1951,6 +2007,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_17.py
 
@@ -1974,6 +2031,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_18.py
 
@@ -1997,6 +2055,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_19.py
 
@@ -2020,6 +2079,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_20.py
 
@@ -2041,6 +2101,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_01.py
 
@@ -2064,6 +2125,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_02.py
 
@@ -2087,6 +2149,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_03.py
 
@@ -2110,6 +2173,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_04.py
 
@@ -2133,6 +2197,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_05.py
 
@@ -2156,6 +2221,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_06.py
 
@@ -2179,6 +2245,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_07.py
 
@@ -2202,6 +2269,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_08.py
 
@@ -2225,6 +2293,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_09.py
 
@@ -2248,6 +2317,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_10.py
 
@@ -2271,6 +2341,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_11.py
 
@@ -2294,6 +2365,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_12.py
 
@@ -2317,6 +2389,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_13.py
 
@@ -2340,6 +2413,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_14.py
 
@@ -2363,6 +2437,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_15.py
 
@@ -2386,6 +2461,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_16.py
 
@@ -2409,6 +2485,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_17.py
 
@@ -2432,6 +2509,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_18.py
 
@@ -2455,6 +2533,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_19.py
 
@@ -2478,6 +2557,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_20.py
 
@@ -2499,6 +2579,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_01.py
 
@@ -2522,6 +2603,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_02.py
 
@@ -2545,6 +2627,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_03.py
 
@@ -2568,6 +2651,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_04.py
 
@@ -2591,6 +2675,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_05.py
 
@@ -2614,6 +2699,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_06.py
 
@@ -2637,6 +2723,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_07.py
 
@@ -2660,6 +2747,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_08.py
 
@@ -2683,6 +2771,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_09.py
 
@@ -2706,6 +2795,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_10.py
 
@@ -2729,6 +2819,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_11.py
 
@@ -2752,6 +2843,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_12.py
 
@@ -2775,6 +2867,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_13.py
 
@@ -2798,6 +2891,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_14.py
 
@@ -2821,6 +2915,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_15.py
 
@@ -2844,6 +2939,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_16.py
 
@@ -2867,6 +2963,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_17.py
 
@@ -2890,6 +2987,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_18.py
 
@@ -2913,6 +3011,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_19.py
 
@@ -2936,6 +3035,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_20.py
 
@@ -2957,6 +3057,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_01.py
 
@@ -2980,6 +3081,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_02.py
 
@@ -3003,6 +3105,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_03.py
 
@@ -3026,6 +3129,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_04.py
 
@@ -3049,6 +3153,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_05.py
 
@@ -3072,6 +3177,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_06.py
 
@@ -3095,6 +3201,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_07.py
 
@@ -3118,6 +3225,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_08.py
 
@@ -3141,6 +3249,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_09.py
 
@@ -3164,6 +3273,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_10.py
 
@@ -3187,6 +3297,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_11.py
 
@@ -3210,6 +3321,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_12.py
 
@@ -3233,6 +3345,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_13.py
 
@@ -3256,6 +3369,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_14.py
 
@@ -3279,6 +3393,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_15.py
 
@@ -3302,6 +3417,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_16.py
 
@@ -3325,6 +3441,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_17.py
 
@@ -3348,6 +3465,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_18.py
 
@@ -3371,6 +3489,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_19.py
 
@@ -3394,6 +3513,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python practitioner_detail_20.py
 
@@ -3434,6 +3554,7 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python report.py
 
@@ -3455,5 +3576,6 @@
 #       - name: Run Occupation Detail Scraping
 #         env:
 #           SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+#           SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
 #         run: |
 #           python clear.py
